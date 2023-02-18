@@ -1,5 +1,8 @@
+package com.example;
+
 import org.apache.pulsar.client.api.*;
 import org.apache.pulsar.client.api.PulsarClient;
+import org.apache.pulsar.client.api.PulsarClientException;
 
 import java.io.IOException;
 
@@ -11,7 +14,7 @@ public class PulsarSubscriptionIssue {
         String serviceUrlOfPulsarServer = "pulsar+ssl://api-peamouth-0b57f3c7.paas.macrometa.io:6651";
         String gdnAPIToken = "Tu_TZ0W2cR92-sr1j-l7ACA.newone.9pej9tihskpx2vYZaxubGW3sFCJLzxe55NRh7T0uk1JMYiRmHdiQsWh5JhRXXT6c418385";
         String topicOfStream = "Tu_TZ0W2cR92-sr1j-l7ACA/c8local._system/c8locals.OutputStream";
-        final int NUM_OF_READERS = 13;
+        final int NUM_OF_READERS = 15;
         Reader<byte[]> reader = null;
 
         // create pulsar client
@@ -34,6 +37,7 @@ public class PulsarSubscriptionIssue {
 
             } catch (PulsarClientException e) {
                 e.printStackTrace();
+                System.out.println(e.getCause());
                 return;
             }
         }
